@@ -6,13 +6,16 @@
     <meta name="Author" content="" />
     <meta name="Keywords" content="" />
     <meta name="Description" content="" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
       html,
       body {
         height: 100%;
         padding: 0;
         margin: 0;
-        background: #000;
+        background: #ffc0cb;
 
         display: flex;
         justify-content: center;
@@ -25,23 +28,46 @@
       }
 
       #title {
-        font-size: 28px;
+        font-size: 50px;
         color: blue;
         font-weight: 900;
         text-transform: uppercase;
         margin-top: 0;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
 
-        background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+        font-family: "Amatic SC";
+
+        background: -webkit-linear-gradient(45deg, #fff, #f6f4f6 80%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+
+        animation: toCenter 3s infinite;
+      }
+
+      @keyframes toCenter {
+        0% {
+          opacity: 0.5;
+          transform: scale(25px);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(100%);
+        }
+        100% {
+          opacity: 0.5;
+          transform: scale(25px);
+        }
+      }
+      .type-cursor {
+        color: aliceblue !important;
       }
     </style>
   </head>
 
   <body>
     <canvas id="pinkboard"> </canvas>
-    <h1 id="title">Công chúa của anh <3</h1>
+    <h1 id="title"><span class="auto-type"></span></h1>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
       /*
        * Settings
@@ -267,7 +293,7 @@
           }
           context.closePath();
           // create the fill
-          context.fillStyle = "#ea80b0";
+          context.fillStyle = "#eb0c32";
           context.fill();
           // create the image
           var image = new Image();
@@ -319,6 +345,18 @@
           render();
         }, 10);
       })(document.getElementById("pinkboard"));
+    </script>
+    <script>
+      // Animation show word by word
+      var typed = new Typed(".auto-type", {
+        strings: ["Công chúa của anh", "Yêu bé", "Thương bé"],
+        typeSpeed: 150,
+        backSpeed: 150,
+        loop: true,
+        fadeOut: true,
+        fadeOutDelay: 1,
+        // showCursor: false,
+      });
     </script>
   </body>
 </html>
